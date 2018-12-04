@@ -1,0 +1,18 @@
+{
+  "name": "react-emotion-grid",
+  "version": "0.2.0",
+  "description": "react grid with emotion",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest --coverage",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "author": "Wang Zuo <wzuoadjusted@gmail.com> (https://wangzuo.me/)",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "^7.1.5",
+    "@emotion/core": "^10.0.1"
+  }
+}
