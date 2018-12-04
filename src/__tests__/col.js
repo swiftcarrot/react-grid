@@ -1,4 +1,6 @@
-import { makeCol } from '../col';
+import React from 'react';
+import renderer from 'react-test-renderer';
+import Col, { makeCol, makeColOffset, makeColOrder } from '../col';
 
 const theme = {
   gridGutterWidth: 20,
@@ -58,5 +60,63 @@ Object {
   "position": "relative",
   "width": "100%",
 }
+`);
+});
+
+test('makeColOffset', () => {
+  expect(makeColOffset(theme, { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }))
+    .toMatchInlineSnapshot(`
+Object {
+  "@media(min-width: 1200px)": Object {
+    "marginLeft": "41.666667%",
+  },
+  "@media(min-width: 576px)": Object {
+    "marginLeft": "16.666667%",
+  },
+  "@media(min-width: 768px)": Object {
+    "marginLeft": "25.000000%",
+  },
+  "@media(min-width: 992px)": Object {
+    "marginLeft": "33.333333%",
+  },
+  "marginLeft": "8.333333%",
+}
+`);
+});
+
+test('makeColOrder', () => {
+  expect(
+    makeColOrder(theme, {
+      xs: 'first',
+      sm: 2,
+      md: 3,
+      lg: 4,
+      xl: 'last'
+    })
+  ).toMatchInlineSnapshot(`
+Object {
+  "@media(min-width: 1200px)": Object {
+    "order": 13,
+  },
+  "@media(min-width: 576px)": Object {
+    "order": 2,
+  },
+  "@media(min-width: 768px)": Object {
+    "order": 3,
+  },
+  "@media(min-width: 992px)": Object {
+    "order": 4,
+  },
+  "order": -1,
+}
+`);
+});
+
+test('Col', () => {
+  const component = renderer.create(<Col />);
+  expect(component.toJSON()).toMatchInlineSnapshot(`
+<div
+  className="css-1rvsfeh-Col"
+/>
 `);
 });

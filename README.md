@@ -29,7 +29,33 @@ const Layout = () => (
 );
 ```
 
-### Custom theme with emotion-theming
+### API
+
+#### Container
+
+```javascript
+<Container />
+<Container fluid/>
+```
+
+#### Row
+
+```javascript
+<Row />
+```
+
+#### Col
+
+```javascript
+<Col />
+<Col xs={1}/>
+<Col offset={{ xs: 1 }}/>
+<Col order={{ xs: 1 }}/>
+```
+
+### Customize
+
+#### with emotion-theming
 
 ```javascript
 // grid.js
@@ -67,7 +93,7 @@ const App = () => (
 );
 ```
 
-### Custom theme with props
+#### with props
 
 ```javascript
 // grid.js

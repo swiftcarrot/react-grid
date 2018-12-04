@@ -56,8 +56,66 @@ export const makeCol = (
   return styles;
 };
 
-const Col = ({ theme, xs, sm, md, lg, xl, children, ...props }) => (
-  <div {...props} css={makeCol(theme, { xs, sm, md, lg, xl })}>
+export const makeColOffset = ({ gridBreakpoints, gridColumns }, offset) => {
+  const styles = {};
+  Object.keys(offset).forEach(name => {
+    const size = offset[name];
+    const media = mediaBreakpointUp(name, gridBreakpoints);
+    const mediaStyles = {
+      marginLeft: percentage(size / gridColumns)
+    };
+
+    if (media) {
+      Object.assign(styles, {
+        [media]: mediaStyles
+      });
+    } else {
+      Object.assign(styles, mediaStyles);
+    }
+  });
+  return styles;
+};
+
+export const makeColOrder = ({ gridBreakpoints, gridColumns }, order) => {
+  const styles = {};
+  Object.keys(order).forEach(name => {
+    const size = order[name];
+    const media = mediaBreakpointUp(name, gridBreakpoints);
+    const mediaStyles = {
+      order: size === 'first' ? -1 : size === 'last' ? gridColumns + 1 : size
+    };
+
+    if (media) {
+      Object.assign(styles, {
+        [media]: mediaStyles
+      });
+    } else {
+      Object.assign(styles, mediaStyles);
+    }
+  });
+  return styles;
+};
+
+const Col = ({
+  theme,
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+  offset,
+  order,
+  children,
+  ...props
+}) => (
+  <div
+    {...props}
+    css={[
+      makeCol(theme, { xs, sm, md, lg, xl }),
+      offset && makeColOffset(theme, offset),
+      order && makeColOrder(theme, order)
+    ]}
+  >
     {children}
   </div>
 );
