@@ -1,6 +1,6 @@
 {
   "name": "react-emotion-grid",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "react bootstrap grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -43,5 +43,18 @@
     "setupFiles": [
       "<rootDir>/jest.setup.js"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangzuo/react-emotion-grid.git"
+  },
+  "keywords": [
+    "react-component",
+    "grid",
+    "emotion"
+  ],
+  "bugs": {
+    "url": "https://github.com/wangzuo/react-emotion-grid/issues"
+  },
+  "homepage": "https://github.com/wangzuo/react-emotion-grid#readme"
 }
