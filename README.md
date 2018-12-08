@@ -51,6 +51,7 @@ const Layout = () => (
 <Col xs={1}/>
 <Col offset={{ xs: 1 }}/>
 <Col order={{ xs: 1 }}/>
+<Col order={{ xs: 'first', md: 'last' }}/>
 ```
 
 ### Customize
