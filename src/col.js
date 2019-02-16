@@ -2,7 +2,17 @@
 import { jsx } from '@emotion/core';
 import theme from './theme';
 
-export const percentage = x => `${(x * 100).toFixed(6)}%`;
+const percentage = x => `${(x * 100).toFixed(6)}%`;
+
+const breakpointNext = (name, breakpoints) => {};
+
+const breakpointMin = (name, breakpoints) => {};
+
+const breakpointMax = (name, breakpoints) => {};
+
+const breakpointInfix = (name, breakpoints) => {};
+
+const assignMediaStyles = () => {};
 
 export const mediaBreakpointUp = (name, breakpoints) => {
   const min = breakpoints[name];
@@ -11,7 +21,7 @@ export const mediaBreakpointUp = (name, breakpoints) => {
   }
 };
 
-// todo: fix max
+// todo
 export const mediaBreakpointDown = (name, breakpoints) => {
   const max = breakpoints[name];
   if (max) {
@@ -19,28 +29,60 @@ export const mediaBreakpointDown = (name, breakpoints) => {
   }
 };
 
+// todo
+export const mediaBreakpointBetween = (lower, upper, breakpoints) => {};
+
+// todo
+export const mediaBreakpointOnly = (name, breakpoints) => {};
+
 export const makeCol = (
   { gridGutterWidth, gridColumns, gridBreakpoints },
   options = {}
 ) => {
   const styles = {
+    boxSizing: 'border-box',
     position: 'relative',
     width: '100%',
     paddingRight: gridGutterWidth / 2,
-    paddingLeft: gridGutterWidth / 2,
-    flexBasis: 0,
-    flexGrow: 1,
-    maxWidth: '100%'
+    paddingLeft: gridGutterWidth / 2
   };
 
-  Object.keys(gridBreakpoints).forEach(name => {
-    const size = options[name];
+  Object.keys(gridBreakpoints).forEach(breakpoint => {
+    const value = options[breakpoint];
+    const media = mediaBreakpointUp(breakpoint, gridBreakpoints);
 
-    if (size && size > 0) {
-      const media = mediaBreakpointUp(name, gridBreakpoints);
+    if (value === true) {
       const mediaStyles = {
-        flex: `0 0 ${percentage(size / gridColumns)}`,
-        maxWidth: percentage(size / gridColumns)
+        flexBasis: 0,
+        flexGrow: 1,
+        maxWidth: '100%'
+      };
+
+      if (media) {
+        Object.assign(styles, {
+          [media]: mediaStyles
+        });
+      } else {
+        Object.assign(styles, mediaStyles);
+      }
+    } else if (value === 'auto') {
+      const mediaStyles = {
+        flex: '0 0 auto',
+        width: 'auto',
+        maxWidth: '100%'
+      };
+
+      if (media) {
+        Object.assign(styles, {
+          [media]: mediaStyles
+        });
+      } else {
+        Object.assign(styles, mediaStyles);
+      }
+    } else if (value !== false && value > 0) {
+      const mediaStyles = {
+        flex: `0 0 ${percentage(value / gridColumns)}`,
+        maxWidth: percentage(value / gridColumns)
       };
 
       if (media) {
@@ -103,30 +145,45 @@ const Col = ({
   md,
   lg,
   xl,
+  auto,
   offset,
   order,
   children,
   ...props
-}) => (
-  <div
-    {...props}
-    css={[
-      makeCol(theme, { xs, sm, md, lg, xl }),
-      offset && makeColOffset(theme, offset),
-      order && makeColOrder(theme, order)
-    ]}
-  >
-    {children}
-  </div>
-);
+}) => {
+  if (
+    xs === false &&
+    sm === false &&
+    md === false &&
+    lg === false &&
+    xl === false
+  ) {
+    xs = true;
+  }
+
+  return (
+    <div
+      {...props}
+      data-eg-col="true"
+      css={[
+        makeCol(theme, { xs, sm, md, lg, xl, auto }),
+        offset && makeColOffset(theme, offset),
+        order && makeColOrder(theme, order)
+      ]}
+    >
+      {children}
+    </div>
+  );
+};
 
 Col.defaultProps = {
   theme,
-  xs: -1,
-  sm: -1,
-  md: -1,
-  lg: -1,
-  xl: -1
+  auto: false,
+  xs: false,
+  sm: false,
+  md: false,
+  lg: false,
+  xl: false
 };
 
 export default Col;

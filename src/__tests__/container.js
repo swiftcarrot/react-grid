@@ -1,26 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Container, { makeContainer, makeContainerMaxWidths } from '../container';
+import theme from '../theme';
 
 test('makeContainer', () => {
-  expect(makeContainer({ gridGutterWidth: 20 })).toMatchInlineSnapshot(`
+  expect(makeContainer(theme)).toMatchInlineSnapshot(`
 Object {
+  "boxSizing": "border-box",
   "marginLeft": "auto",
   "marginRight": "auto",
-  "paddingLeft": 10,
-  "paddingRight": 10,
+  "paddingLeft": 15,
+  "paddingRight": 15,
   "width": "100%",
 }
 `);
 });
 
 test('makeContainerMaxWidths', () => {
-  expect(
-    makeContainerMaxWidths({
-      gridBreakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 },
-      containerMaxWidths: { sm: 540, md: 720, lg: 960, xl: 1140 }
-    })
-  ).toMatchInlineSnapshot(`
+  expect(makeContainerMaxWidths(theme)).toMatchInlineSnapshot(`
 Object {
   "@media(min-width: 1200px)": Object {
     "maxWidth": 1140,
@@ -38,11 +35,26 @@ Object {
 `);
 });
 
-test('fluid', () => {
-  const component = renderer.create(<Container fluid />);
+test('render', () => {
+  const component = renderer.create(<Container>children</Container>);
   expect(component.toJSON()).toMatchInlineSnapshot(`
 <div
-  className="css-dztklu-Container"
-/>
+  className="css-1atz3w2-Container"
+  data-eg-container="true"
+>
+  children
+</div>
+`);
+});
+
+test('fluid', () => {
+  const component = renderer.create(<Container fluid>children</Container>);
+  expect(component.toJSON()).toMatchInlineSnapshot(`
+<div
+  className="css-1bkhhab-Container"
+  data-eg-container="true"
+>
+  children
+</div>
 `);
 });

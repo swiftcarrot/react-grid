@@ -31,6 +31,20 @@ const Layout = () => (
 
 ### API
 
+| bootstrap css class   | component                       |
+| --------------------- | ------------------------------- |
+| .container            | `<Container/>`                  |
+| .container-fluid      | `<Container fluid/>`            |
+| .row                  | `<Row />`                       |
+| .row.no-gutters       | `<Row noGutters />`             |
+| .col                  | `<Col/> (<Col xs />)`           |
+| .col-sm               | `<Col sm />`                    |
+| .col-md-auto          | `<Col md="auto" />`             |
+| .col-6                | `<Col xs={6} />`                |
+| .col-md-6             | `<Col md={6} />`                |
+| .col.order-12         | `<Col order={{xs:12}} />`       |
+| .col-md-4.offset-md-4 | `<Col md={4} order={{md:4}} />` |
+
 #### Container
 
 ```javascript

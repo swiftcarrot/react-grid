@@ -5,6 +5,7 @@ import Row, { makeRow } from '../row';
 test('makeRow', () => {
   expect(makeRow({ gridGutterWidth: 20 })).toMatchInlineSnapshot(`
 Object {
+  "boxSizing": "border-box",
   "display": "flex",
   "flexWrap": "wrap",
   "marginLeft": -10,
@@ -13,11 +14,26 @@ Object {
 `);
 });
 
-test('Row', () => {
-  const component = renderer.create(<Row />);
+test('render', () => {
+  const component = renderer.create(<Row>children</Row>);
   expect(component.toJSON()).toMatchInlineSnapshot(`
 <div
-  className="css-1e6g4p7-Row"
-/>
+  className="css-ecrkpz-Row"
+  data-eg-row="true"
+>
+  children
+</div>
+`);
+});
+
+test('noGutters', () => {
+  const component = renderer.create(<Row noGutters>children</Row>);
+  expect(component.toJSON()).toMatchInlineSnapshot(`
+<div
+  className="css-19oau2f-Row"
+  data-eg-row="true"
+>
+  children
+</div>
 `);
 });

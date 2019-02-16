@@ -1,33 +1,25 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import Col, { makeCol, makeColOffset, makeColOrder } from '../col';
-
-const theme = {
-  gridGutterWidth: 20,
-  gridColumns: 12,
-  gridBreakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 }
-};
+import theme from '../theme';
 
 test('makeCol', () => {
   expect(makeCol(theme)).toMatchInlineSnapshot(`
 Object {
-  "flexBasis": 0,
-  "flexGrow": 1,
-  "maxWidth": "100%",
-  "paddingLeft": 10,
-  "paddingRight": 10,
+  "boxSizing": "border-box",
+  "paddingLeft": 15,
+  "paddingRight": 15,
   "position": "relative",
   "width": "100%",
 }
 `);
   expect(makeCol(theme, { xs: 6 })).toMatchInlineSnapshot(`
 Object {
+  "boxSizing": "border-box",
   "flex": "0 0 50.000000%",
-  "flexBasis": 0,
-  "flexGrow": 1,
   "maxWidth": "50.000000%",
-  "paddingLeft": 10,
-  "paddingRight": 10,
+  "paddingLeft": 15,
+  "paddingRight": 15,
   "position": "relative",
   "width": "100%",
 }
@@ -51,12 +43,11 @@ Object {
     "flex": "0 0 33.333333%",
     "maxWidth": "33.333333%",
   },
+  "boxSizing": "border-box",
   "flex": "0 0 8.333333%",
-  "flexBasis": 0,
-  "flexGrow": 1,
   "maxWidth": "8.333333%",
-  "paddingLeft": 10,
-  "paddingRight": 10,
+  "paddingLeft": 15,
+  "paddingRight": 15,
   "position": "relative",
   "width": "100%",
 }
@@ -113,10 +104,13 @@ Object {
 });
 
 test('Col', () => {
-  const component = renderer.create(<Col />);
+  const component = renderer.create(<Col>children</Col>);
   expect(component.toJSON()).toMatchInlineSnapshot(`
 <div
-  className="css-1rvsfeh-Col"
-/>
+  className="css-1ybbpqv-Col"
+  data-eg-col="true"
+>
+  children
+</div>
 `);
 });

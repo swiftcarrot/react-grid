@@ -4,6 +4,7 @@ import theme from './theme';
 import { mediaBreakpointUp } from './col';
 
 export const makeContainer = ({ gridGutterWidth }) => ({
+  boxSizing: 'border-box',
   width: '100%',
   paddingRight: gridGutterWidth / 2,
   paddingLeft: gridGutterWidth / 2,
@@ -35,14 +36,17 @@ export const makeContainerMaxWidths = ({
   return styles;
 };
 
-const Container = ({ children, theme, fluid, ...props }) => (
-  <div
-    {...props}
-    css={[makeContainer(theme), !fluid && makeContainerMaxWidths(theme)]}
-  >
-    {children}
-  </div>
-);
+const Container = ({ children, theme, fluid, ...props }) => {
+  return (
+    <div
+      {...props}
+      data-eg-container="true"
+      css={[makeContainer(theme), !fluid && makeContainerMaxWidths(theme)]}
+    >
+      {children}
+    </div>
+  );
+};
 
 Container.defaultProps = {
   theme,
