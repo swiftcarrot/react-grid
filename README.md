@@ -13,7 +13,11 @@ npm install react-emotion-grid --save
 yarn add react-emotion-grid
 ```
 
-### Usage
+### Demo
+
+[https://code.swiftcarrot.com/react-emotion-grid](https://code.swiftcarrot.com/react-emotion-grid)
+
+### Basic Usage
 
 ```javascript
 import { Container, Row, Col } from 'react-emotion-grid';
