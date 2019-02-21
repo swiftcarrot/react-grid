@@ -1,39 +1,18 @@
+/**
+ * @jest-environment node
+ */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Row, { makeRow } from '../row';
+import { renderToString } from 'react-dom/server';
+import { Row } from '../';
 
-test('makeRow', () => {
-  expect(makeRow({ gridGutterWidth: 20 })).toMatchInlineSnapshot(`
-Object {
-  "boxSizing": "border-box",
-  "display": "flex",
-  "flexWrap": "wrap",
-  "marginLeft": -10,
-  "marginRight": -10,
-}
-`);
+test('row', () => {
+  expect(renderToString(<Row>children</Row>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"ecrkpz-Row\\">.css-ecrkpz-Row{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;}</style><div data-eg-row=\\"true\\" class=\\"css-ecrkpz-Row\\">children</div>"`
+  );
 });
 
-test('render', () => {
-  const component = renderer.create(<Row>children</Row>);
-  expect(component.toJSON()).toMatchInlineSnapshot(`
-<div
-  className="css-ecrkpz-Row"
-  data-eg-row="true"
->
-  children
-</div>
-`);
-});
-
-test('noGutters', () => {
-  const component = renderer.create(<Row noGutters>children</Row>);
-  expect(component.toJSON()).toMatchInlineSnapshot(`
-<div
-  className="css-19oau2f-Row"
-  data-eg-row="true"
->
-  children
-</div>
-`);
+test('row noGutters', () => {
+  expect(renderToString(<Row noGutters>children</Row>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"19oau2f-Row\\">.css-19oau2f-Row{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-right:-15px;margin-left:-15px;margin-right:0;margin-left:0;}.css-19oau2f-Row > [data-eg-col]{padding-right:0;padding-left:0;}</style><div data-eg-row=\\"true\\" class=\\"css-19oau2f-Row\\">children</div>"`
+  );
 });

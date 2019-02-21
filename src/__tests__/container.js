@@ -1,60 +1,20 @@
+/**
+ * @jest-environment node
+ */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Container, { makeContainer, makeContainerMaxWidths } from '../container';
-import theme from '../theme';
+import { renderToString } from 'react-dom/server';
+import { Container } from '../';
 
-test('makeContainer', () => {
-  expect(makeContainer(theme)).toMatchInlineSnapshot(`
-Object {
-  "boxSizing": "border-box",
-  "marginLeft": "auto",
-  "marginRight": "auto",
-  "paddingLeft": 15,
-  "paddingRight": 15,
-  "width": "100%",
-}
-`);
+test('container', () => {
+  expect(renderToString(<Container>children</Container>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1atz3w2-Container\\">.css-1atz3w2-Container{box-sizing:border-box;width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;}@media(min-width:576px){.css-1atz3w2-Container{max-width:540px;}}@media(min-width:768px){.css-1atz3w2-Container{max-width:720px;}}@media(min-width:992px){.css-1atz3w2-Container{max-width:960px;}}@media(min-width:1200px){.css-1atz3w2-Container{max-width:1140px;}}</style><div data-eg-container=\\"true\\" class=\\"css-1atz3w2-Container\\">children</div>"`
+  );
 });
 
-test('makeContainerMaxWidths', () => {
-  expect(makeContainerMaxWidths(theme)).toMatchInlineSnapshot(`
-Object {
-  "@media(min-width: 1200px)": Object {
-    "maxWidth": 1140,
-  },
-  "@media(min-width: 576px)": Object {
-    "maxWidth": 540,
-  },
-  "@media(min-width: 768px)": Object {
-    "maxWidth": 720,
-  },
-  "@media(min-width: 992px)": Object {
-    "maxWidth": 960,
-  },
-}
-`);
-});
-
-test('render', () => {
-  const component = renderer.create(<Container>children</Container>);
-  expect(component.toJSON()).toMatchInlineSnapshot(`
-<div
-  className="css-1atz3w2-Container"
-  data-eg-container="true"
->
-  children
-</div>
-`);
-});
-
-test('fluid', () => {
-  const component = renderer.create(<Container fluid>children</Container>);
-  expect(component.toJSON()).toMatchInlineSnapshot(`
-<div
-  className="css-1bkhhab-Container"
-  data-eg-container="true"
->
-  children
-</div>
-`);
+test('container fluid', () => {
+  expect(
+    renderToString(<Container fluid>children</Container>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1bkhhab-Container\\">.css-1bkhhab-Container{box-sizing:border-box;width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto;}</style><div data-eg-container=\\"true\\" class=\\"css-1bkhhab-Container\\">children</div>"`
+  );
 });

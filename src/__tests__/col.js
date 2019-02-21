@@ -1,116 +1,76 @@
+/**
+ * @jest-environment node
+ */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import Col, { makeCol, makeColOffset, makeColOrder } from '../col';
-import theme from '../theme';
+import { renderToString } from 'react-dom/server';
+import { Col } from '../';
 
-test('makeCol', () => {
-  expect(makeCol(theme)).toMatchInlineSnapshot(`
-Object {
-  "boxSizing": "border-box",
-  "paddingLeft": 15,
-  "paddingRight": 15,
-  "position": "relative",
-  "width": "100%",
-}
-`);
-  expect(makeCol(theme, { xs: 6 })).toMatchInlineSnapshot(`
-Object {
-  "boxSizing": "border-box",
-  "flex": "0 0 50.000000%",
-  "maxWidth": "50.000000%",
-  "paddingLeft": 15,
-  "paddingRight": 15,
-  "position": "relative",
-  "width": "100%",
-}
-`);
-  expect(makeCol(theme, { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }))
-    .toMatchInlineSnapshot(`
-Object {
-  "@media(min-width: 1200px)": Object {
-    "flex": "0 0 41.666667%",
-    "maxWidth": "41.666667%",
-  },
-  "@media(min-width: 576px)": Object {
-    "flex": "0 0 16.666667%",
-    "maxWidth": "16.666667%",
-  },
-  "@media(min-width: 768px)": Object {
-    "flex": "0 0 25.000000%",
-    "maxWidth": "25.000000%",
-  },
-  "@media(min-width: 992px)": Object {
-    "flex": "0 0 33.333333%",
-    "maxWidth": "33.333333%",
-  },
-  "boxSizing": "border-box",
-  "flex": "0 0 8.333333%",
-  "maxWidth": "8.333333%",
-  "paddingLeft": 15,
-  "paddingRight": 15,
-  "position": "relative",
-  "width": "100%",
-}
-`);
+test('col', () => {
+  expect(renderToString(<Col>children</Col>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1ybbpqv-Col\\">.css-1ybbpqv-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}</style><div data-eg-col=\\"true\\" class=\\"css-1ybbpqv-Col\\">children</div>"`
+  );
 });
 
-test('makeColOffset', () => {
-  expect(makeColOffset(theme, { xs: 1, sm: 2, md: 3, lg: 4, xl: 5 }))
-    .toMatchInlineSnapshot(`
-Object {
-  "@media(min-width: 1200px)": Object {
-    "marginLeft": "41.666667%",
-  },
-  "@media(min-width: 576px)": Object {
-    "marginLeft": "16.666667%",
-  },
-  "@media(min-width: 768px)": Object {
-    "marginLeft": "25.000000%",
-  },
-  "@media(min-width: 992px)": Object {
-    "marginLeft": "33.333333%",
-  },
-  "marginLeft": "8.333333%",
-}
-`);
+test('col lg', () => {
+  expect(renderToString(<Col>children</Col>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1ybbpqv-Col\\">.css-1ybbpqv-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}</style><div data-eg-col=\\"true\\" class=\\"css-1ybbpqv-Col\\">children</div>"`
+  );
 });
 
-test('makeColOrder', () => {
+test('col xs=auto', () => {
+  expect(renderToString(<Col xs="auto">children</Col>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"15svstx-Col\\">.css-15svstx-Col{box-sizing:border-box;position:relative;width:auto;padding-right:15px;padding-left:15px;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;max-width:100%;}</style><div data-eg-col=\\"true\\" class=\\"css-15svstx-Col\\">children</div>"`
+  );
+});
+
+test('col xs=2', () => {
+  expect(renderToString(<Col xs={2}>children</Col>)).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1xu0dpm-Col\\">.css-1xu0dpm-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex:0 0 16.666667%;-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%;}</style><div data-eg-col=\\"true\\" class=\\"css-1xu0dpm-Col\\">children</div>"`
+  );
+});
+
+test('col xs lg=2', () => {
   expect(
-    makeColOrder(theme, {
-      xs: 'first',
-      sm: 2,
-      md: 3,
-      lg: 4,
-      xl: 'last'
-    })
-  ).toMatchInlineSnapshot(`
-Object {
-  "@media(min-width: 1200px)": Object {
-    "order": 13,
-  },
-  "@media(min-width: 576px)": Object {
-    "order": 2,
-  },
-  "@media(min-width: 768px)": Object {
-    "order": 3,
-  },
-  "@media(min-width: 992px)": Object {
-    "order": 4,
-  },
-  "order": -1,
-}
-`);
+    renderToString(
+      <Col xs lg={2}>
+        children
+      </Col>
+    )
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1yz5kk8-Col\\">.css-1yz5kk8-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}@media(min-width:992px){.css-1yz5kk8-Col{-webkit-flex:0 0 16.666667%;-ms-flex:0 0 16.666667%;flex:0 0 16.666667%;max-width:16.666667%;}}</style><div data-eg-col=\\"true\\" class=\\"css-1yz5kk8-Col\\">children</div>"`
+  );
 });
 
-test('Col', () => {
-  const component = renderer.create(<Col>children</Col>);
-  expect(component.toJSON()).toMatchInlineSnapshot(`
-<div
-  className="css-1ybbpqv-Col"
-  data-eg-col="true"
->
-  children
-</div>
-`);
+test('col order', () => {
+  expect(
+    renderToString(<Col order={{ xs: 'first' }}>children</Col>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"r2for4-Col\\">.css-r2for4-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;-webkit-order:-1;-ms-flex-order:-1;order:-1;}</style><div data-eg-col=\\"true\\" class=\\"css-r2for4-Col\\">children</div>"`
+  );
+
+  expect(
+    renderToString(<Col order={{ md: 1 }}>children</Col>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"pjvwmc-Col\\">.css-pjvwmc-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}@media(min-width:768px){.css-pjvwmc-Col{-webkit-order:1;-ms-flex-order:1;order:1;}}</style><div data-eg-col=\\"true\\" class=\\"css-pjvwmc-Col\\">children</div>"`
+  );
+
+  expect(
+    renderToString(<Col order={{ lg: 'last' }}>children</Col>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"1v4et8q-Col\\">.css-1v4et8q-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}@media(min-width:992px){.css-1v4et8q-Col{-webkit-order:13;-ms-flex-order:13;order:13;}}</style><div data-eg-col=\\"true\\" class=\\"css-1v4et8q-Col\\">children</div>"`
+  );
+});
+
+test('col offset', () => {
+  expect(
+    renderToString(<Col offset={{ xs: 2 }}>children</Col>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"uagtm8-Col\\">.css-uagtm8-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;margin-left:16.666667%;}</style><div data-eg-col=\\"true\\" class=\\"css-uagtm8-Col\\">children</div>"`
+  );
+
+  expect(
+    renderToString(<Col offset={{ lg: 2 }}>children</Col>)
+  ).toMatchInlineSnapshot(
+    `"<style data-emotion-css=\\"o214x2-Col\\">.css-o214x2-Col{box-sizing:border-box;position:relative;width:100%;padding-right:15px;padding-left:15px;-webkit-flex-basis:0;-ms-flex-preferred-size:0;flex-basis:0;-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;}@media(min-width:992px){.css-o214x2-Col{margin-left:16.666667%;}}</style><div data-eg-col=\\"true\\" class=\\"css-o214x2-Col\\">children</div>"`
+  );
 });
