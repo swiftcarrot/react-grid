@@ -1,26 +1,26 @@
-# react-emotion-grid
+# react-grid
 
-[![npm](https://img.shields.io/npm/v/react-emotion-grid.svg)](https://www.npmjs.com/package/react-emotion-grid)
-[![npm](https://img.shields.io/npm/dm/react-emotion-grid.svg)](https://www.npmjs.com/package/react-emotion-grid)
-[![Build Status](https://travis-ci.org/wangzuo/react-emotion-grid.svg?branch=master)](https://travis-ci.org/wangzuo/react-emotion-grid)
-[![codecov](https://codecov.io/gh/wangzuo/react-emotion-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/wangzuo/react-emotion-grid)
+[![npm](https://img.shields.io/npm/v/react-grid.svg)](https://www.npmjs.com/package/react-grid)
+[![npm](https://img.shields.io/npm/dm/react-grid.svg)](https://www.npmjs.com/package/react-grid)
+[![Build Status](https://travis-ci.org/wangzuo/react-grid.svg?branch=master)](https://travis-ci.org/wangzuo/react-grid)
+[![codecov](https://codecov.io/gh/wangzuo/react-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/wangzuo/react-grid)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ### Installation
 
 ```sh
-npm install react-emotion-grid --save
-yarn add react-emotion-grid
+npm install react-grid --save
+yarn add react-grid
 ```
 
 ### Demo
 
-[https://code.swiftcarrot.com/react-emotion-grid](https://code.swiftcarrot.com/react-emotion-grid)
+[https://code.swiftcarrot.com/react-grid](https://code.swiftcarrot.com/react-grid)
 
 ### Basic Usage
 
 ```javascript
-import { Container, Row, Col } from 'react-emotion-grid';
+import { Container, Row, Col } from 'react-grid';
 
 const Layout = () => (
   <Container>
@@ -83,7 +83,7 @@ import {
   Container as ReactContainer,
   Row as ReactRow,
   Col as ReactCol
-} from 'react-emotion-grid';
+} from 'react-grid';
 
 export const Container = withTheme(ReactContainer);
 export const Row = withTheme(ReactRow);
@@ -120,7 +120,7 @@ import {
   Container as ReactContainer,
   Row as ReactRow,
   Col as ReactCol
-} from 'react-emotion-grid';
+} from 'react-grid';
 
 const theme = {
   gridBreakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 },

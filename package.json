@@ -1,7 +1,7 @@
 {
-  "name": "react-emotion-grid",
-  "version": "0.4.4",
-  "description": "react bootstrap grid component",
+  "name": "react-grid",
+  "version": "2.0.1",
+  "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -16,14 +16,12 @@
     "@emotion/core": "^10.0.7"
   },
   "devDependencies": {
-    "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.1.0",
     "babel-preset-zkit": "^0.2.2",
     "jest": "^24.1.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-test-renderer": "^16.8.2",
-    "regenerator-runtime": "^0.13.1",
     "rollup": "^1.2.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.0",
@@ -37,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/react-emotion-grid.git"
+    "url": "git+https://github.com/wangzuo/react-grid.git"
   },
   "keywords": [
     "react-component",
@@ -45,7 +43,7 @@
     "emotion"
   ],
   "bugs": {
-    "url": "https://github.com/wangzuo/react-emotion-grid/issues"
+    "url": "https://github.com/wangzuo/react-grid/issues"
   },
-  "homepage": "https://code.swiftcarrot.com/react-emotion-grid"
+  "homepage": "https://code.swiftcarrot.com/react-grid"
 }
