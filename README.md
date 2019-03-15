@@ -6,6 +6,10 @@
 [![codecov](https://codecov.io/gh/wangzuo/react-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/wangzuo/react-grid)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
+React grid component
+
+Thanks to [svenanders](https://github.com/svenanders) for the npm handle, the original react-grid project can be found [here](https://github.com/svenanders/react-grid).
+
 ### Installation
 
 ```sh
@@ -22,15 +26,16 @@ yarn add react-grid
 ```javascript
 import { Container, Row, Col } from 'react-grid';
 
-const Layout = () => (
-  <Container>
-    <Row>
-      <Col />
-      <Col />
-      <Col />
-    </Row>
-  </Container>
-);
+function App() {
+  return (
+    <Container>
+      <Row>
+        <Col />
+        <Col />
+      </Row>
+    </Container>
+  );
+}
 ```
 
 ### API
