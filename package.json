@@ -1,6 +1,6 @@
 {
   "name": "react-grid",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "babel-jest": "^24.5.0",
-    "babel-preset-zkit": "^0.3.1",
+    "babel-preset-zkit": "^0.4.0",
     "jest": "^24.5.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

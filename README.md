@@ -151,6 +151,6 @@ const App = () => (
 );
 ```
 
-## License
+### License
 
 MIT
