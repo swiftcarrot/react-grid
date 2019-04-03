@@ -1,9 +1,10 @@
 {
   "name": "react-grid",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=production rollup -c",
     "test": "jest --coverage",
