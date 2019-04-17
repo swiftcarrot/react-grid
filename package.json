@@ -1,6 +1,6 @@
 {
   "name": "react-grid",
-  "version": "2.0.9",
+  "version": "2.0.11",
   "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -11,6 +11,12 @@
     "prepublishOnly": "npm test && npm run build"
   },
   "author": "Wang Zuo <wzuoadjusted@gmail.com> (https://wangzuo.me/)",
+  "maintainers": [
+    {
+      "name": "adjusted",
+      "email": "wzuoadjusted@gmail.com"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.3.4",
