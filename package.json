@@ -1,6 +1,6 @@
 {
   "name": "react-grid",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -52,5 +52,5 @@
   "bugs": {
     "url": "https://github.com/wangzuo/react-grid/issues"
   },
-  "homepage": "https://code.swiftcarrot.com/react-grid"
+  "homepage": "https://swiftcarrot.dev/react-grid"
 }

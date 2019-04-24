@@ -19,7 +19,7 @@ yarn add react-grid
 
 ### Demo
 
-[https://code.swiftcarrot.com/react-grid](https://code.swiftcarrot.com/react-grid)
+[https://swiftcarrot.dev/react-grid](https://swiftcarrot.dev/react-grid)
 
 ### Basic Usage
 
