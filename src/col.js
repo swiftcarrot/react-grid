@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import theme from './theme';
+import styles from './styles';
 
 const percentage = x => `${(x * 100).toFixed(6)}%`;
 
@@ -139,7 +139,7 @@ export const makeColOrder = ({ gridBreakpoints, gridColumns }, order) => {
 };
 
 const Col = ({
-  theme,
+  styles,
   xs,
   sm,
   md,
@@ -166,9 +166,9 @@ const Col = ({
       {...props}
       data-eg-col="true"
       css={[
-        makeCol(theme, { xs, sm, md, lg, xl, auto }),
-        offset && makeColOffset(theme, offset),
-        order && makeColOrder(theme, order)
+        makeCol(styles, { xs, sm, md, lg, xl, auto }),
+        offset && makeColOffset(styles, offset),
+        order && makeColOrder(styles, order)
       ]}
     >
       {children}
@@ -177,7 +177,7 @@ const Col = ({
 };
 
 Col.defaultProps = {
-  theme,
+  styles,
   auto: false,
   xs: false,
   sm: false,

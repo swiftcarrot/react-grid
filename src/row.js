@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import theme from './theme';
+import styles from './styles';
 
 export const makeRow = ({ gridGutterWidth }) => ({
   boxSizing: 'border-box',
@@ -10,12 +10,12 @@ export const makeRow = ({ gridGutterWidth }) => ({
   marginLeft: gridGutterWidth / -2
 });
 
-const Row = ({ theme, noGutters, children, ...props }) => {
+const Row = ({ styles, noGutters, children, ...props }) => {
   return (
     <div
       {...props}
       data-eg-row="true"
-      css={[makeRow(theme), noGutters && styles.noGutters]}
+      css={[makeRow(styles), noGutters && rowStyles.noGutters]}
     >
       {children}
     </div>
@@ -23,11 +23,11 @@ const Row = ({ theme, noGutters, children, ...props }) => {
 };
 
 Row.defaultProps = {
-  theme,
+  styles,
   noGutters: false
 };
 
-const styles = {
+const rowStyles = {
   noGutters: {
     marginRight: 0,
     marginLeft: 0,

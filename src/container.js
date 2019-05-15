@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
-import theme from './theme';
+import styles from './styles';
 import { mediaBreakpointUp } from './col';
 
 export const makeContainer = ({ gridGutterWidth }) => ({
@@ -36,12 +36,12 @@ export const makeContainerMaxWidths = ({
   return styles;
 };
 
-const Container = ({ children, theme, fluid, ...props }) => {
+const Container = ({ children, styles, fluid, ...props }) => {
   return (
     <div
       {...props}
       data-eg-container="true"
-      css={[makeContainer(theme), !fluid && makeContainerMaxWidths(theme)]}
+      css={[makeContainer(styles), !fluid && makeContainerMaxWidths(styles)]}
     >
       {children}
     </div>
@@ -49,7 +49,7 @@ const Container = ({ children, theme, fluid, ...props }) => {
 };
 
 Container.defaultProps = {
-  theme,
+  styles,
   fluid: false
 };
 
