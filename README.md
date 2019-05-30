@@ -2,8 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/react-grid.svg)](https://www.npmjs.com/package/react-grid)
 [![npm](https://img.shields.io/npm/dm/react-grid.svg)](https://www.npmjs.com/package/react-grid)
-[![Build Status](https://travis-ci.org/wangzuo/react-grid.svg?branch=master)](https://travis-ci.org/wangzuo/react-grid)
-[![codecov](https://codecov.io/gh/wangzuo/react-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/wangzuo/react-grid)
+[![Build Status](https://travis-ci.org/swiftcarrot/react-grid.svg?branch=master)](https://travis-ci.org/swiftcarrot/react-grid)
+[![codecov](https://codecov.io/gh/swiftcarrot/react-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/swiftcarrot/react-grid)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 React grid component
