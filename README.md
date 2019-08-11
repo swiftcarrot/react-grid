@@ -90,10 +90,10 @@ import {
 } from 'react-grid';
 
 const styles = {
-  gridBreakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 },
+  breakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 },
   containerMaxWidths: { sm: 540, md: 720, lg: 960, xl: 1140 },
-  gridColumns: 12,
-  gridGutterWidth: 30
+  columns: 12,
+  gutterWidth: 30
 };
 
 export const Container = props => <ReactContainer {...props} styles={styles} />;
@@ -110,6 +110,43 @@ const App = () => (
       <Col />
     </Row>
   </Container>
+);
+```
+
+### breakpoints
+
+react-grid implments breakpoint functions similar to bootstrap grid:
+
+- mediaBreakpointUp
+- mediaBreakpointDown
+- mediaBreakpointBetween
+- mediaBreakpointOnly
+
+```javascript
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
+import { mediaBreakpointUp } from 'react-grid';
+
+const App = () => (
+  <div
+    css={css`
+      ${mediaBreakpointUp('sm')} {
+        font-size: 12px;
+      }
+    `}
+  />
+);
+
+// or
+
+const App = () => (
+  <div
+    css={{
+      [mediaBreakpointUp('sm')]: {
+        fontSize: 12
+      }
+    }}
+  />
 );
 ```
 

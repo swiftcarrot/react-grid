@@ -1,55 +1,25 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
+import { mediaBreakpointUp } from './breakpoints';
 import styles from './styles';
 
-const percentage = x => `${(x * 100).toFixed(6)}%`;
-
-const breakpointNext = (name, breakpoints) => {};
-
-const breakpointMin = (name, breakpoints) => {};
-
-const breakpointMax = (name, breakpoints) => {};
-
-const breakpointInfix = (name, breakpoints) => {};
-
-const assignMediaStyles = () => {};
-
-export const mediaBreakpointUp = (name, breakpoints) => {
-  const min = breakpoints[name];
-  if (min) {
-    return `@media(min-width: ${min}px)`;
-  }
-};
-
-// todo
-export const mediaBreakpointDown = (name, breakpoints) => {
-  const max = breakpoints[name];
-  if (max) {
-    return `@media(max-width: ${max}px)`;
-  }
-};
-
-// todo
-export const mediaBreakpointBetween = (lower, upper, breakpoints) => {};
-
-// todo
-export const mediaBreakpointOnly = (name, breakpoints) => {};
+export const percentage = x => `${(x * 100).toFixed(6)}%`;
 
 export const makeCol = (
-  { gridGutterWidth, gridColumns, gridBreakpoints },
+  { gutterWidth, columns, breakpoints },
   options = {}
 ) => {
   const styles = {
     boxSizing: 'border-box',
     position: 'relative',
     width: '100%',
-    paddingRight: gridGutterWidth / 2,
-    paddingLeft: gridGutterWidth / 2
+    paddingRight: gutterWidth / 2,
+    paddingLeft: gutterWidth / 2
   };
 
-  Object.keys(gridBreakpoints).forEach(breakpoint => {
+  Object.keys(breakpoints).forEach(breakpoint => {
     const value = options[breakpoint];
-    const media = mediaBreakpointUp(breakpoint, gridBreakpoints);
+    const media = mediaBreakpointUp(breakpoint, breakpoints);
 
     if (value === true) {
       const mediaStyles = {
@@ -81,8 +51,8 @@ export const makeCol = (
       }
     } else if (value !== false && value > 0) {
       const mediaStyles = {
-        flex: `0 0 ${percentage(value / gridColumns)}`,
-        maxWidth: percentage(value / gridColumns)
+        flex: `0 0 ${percentage(value / columns)}`,
+        maxWidth: percentage(value / columns)
       };
 
       if (media) {
@@ -98,13 +68,13 @@ export const makeCol = (
   return styles;
 };
 
-export const makeColOffset = ({ gridBreakpoints, gridColumns }, offset) => {
+export const makeColOffset = ({ breakpoints, columns }, offset) => {
   const styles = {};
   Object.keys(offset).forEach(name => {
     const size = offset[name];
-    const media = mediaBreakpointUp(name, gridBreakpoints);
+    const media = mediaBreakpointUp(name, breakpoints);
     const mediaStyles = {
-      marginLeft: percentage(size / gridColumns)
+      marginLeft: percentage(size / columns)
     };
 
     if (media) {
@@ -118,13 +88,13 @@ export const makeColOffset = ({ gridBreakpoints, gridColumns }, offset) => {
   return styles;
 };
 
-export const makeColOrder = ({ gridBreakpoints, gridColumns }, order) => {
+export const makeColOrder = ({ breakpoints, columns }, order) => {
   const styles = {};
   Object.keys(order).forEach(name => {
     const size = order[name];
-    const media = mediaBreakpointUp(name, gridBreakpoints);
+    const media = mediaBreakpointUp(name, breakpoints);
     const mediaStyles = {
-      order: size === 'first' ? -1 : size === 'last' ? gridColumns + 1 : size
+      order: size === 'first' ? -1 : size === 'last' ? columns + 1 : size
     };
 
     if (media) {

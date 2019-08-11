@@ -1,20 +1,20 @@
 /** @jsx jsx */
 import { jsx } from '@emotion/core';
 import styles from './styles';
-import { mediaBreakpointUp } from './col';
+import { mediaBreakpointUp } from './breakpoints';
 
-export const makeContainer = ({ gridGutterWidth }) => ({
+export const makeContainer = ({ gutterWidth }) => ({
   boxSizing: 'border-box',
   width: '100%',
-  paddingRight: gridGutterWidth / 2,
-  paddingLeft: gridGutterWidth / 2,
+  paddingRight: gutterWidth / 2,
+  paddingLeft: gutterWidth / 2,
   marginRight: 'auto',
   marginLeft: 'auto'
 });
 
 export const makeContainerMaxWidths = ({
   containerMaxWidths: maxWidths,
-  gridBreakpoints: breakpoints
+  breakpoints
 }) => {
   const styles = {};
   Object.keys(maxWidths).forEach(breakpoint => {

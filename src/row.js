@@ -2,12 +2,12 @@
 import { jsx } from '@emotion/core';
 import styles from './styles';
 
-export const makeRow = ({ gridGutterWidth }) => ({
+export const makeRow = ({ gutterWidth }) => ({
   boxSizing: 'border-box',
   display: 'flex',
   flexWrap: 'wrap',
-  marginRight: gridGutterWidth / -2,
-  marginLeft: gridGutterWidth / -2
+  marginRight: gutterWidth / -2,
+  marginLeft: gutterWidth / -2
 });
 
 const Row = ({ styles, noGutters, children, ...props }) => {

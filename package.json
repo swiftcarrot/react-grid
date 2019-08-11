@@ -1,6 +1,6 @@
 {
   "name": "react-grid",
-  "version": "3.0.7",
+  "version": "4.0.0",
   "description": "react grid component",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -48,6 +48,7 @@
     "url": "git+https://github.com/swiftcarrot/react-grid.git"
   },
   "keywords": [
+    "react",
     "react-component",
     "grid",
     "emotion"
