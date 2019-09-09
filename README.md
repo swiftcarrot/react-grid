@@ -8,8 +8,6 @@
 
 React grid component
 
-Thanks to [svenanders](https://github.com/svenanders) for the npm handle, the original react-grid project can be found [here](https://github.com/svenanders/react-grid).
-
 ### Installation
 
 ```sh
@@ -24,6 +22,7 @@ yarn add react-grid
 ### Basic Usage
 
 ```javascript
+import React from 'react';
 import { Container, Row, Col } from 'react-grid';
 
 function App() {
