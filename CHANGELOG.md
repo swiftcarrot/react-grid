@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [4.0.3]
+
+- fix deprecated rollup plugins
+
+## [4.0.2]
+
+- format changelog
+
+## [4.0.1]
+
+- update readme
+
 ## [4.0.0]
 
 - rename `styles.gridBreakpoints` to `styles.breakpoints`
