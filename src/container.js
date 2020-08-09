@@ -9,25 +9,25 @@ export const makeContainer = ({ gutterWidth }) => ({
   paddingRight: gutterWidth / 2,
   paddingLeft: gutterWidth / 2,
   marginRight: 'auto',
-  marginLeft: 'auto'
+  marginLeft: 'auto',
 });
 
 export const makeContainerMaxWidths = ({
   containerMaxWidths: maxWidths,
-  breakpoints
+  breakpoints,
 }) => {
   const styles = {};
-  Object.keys(maxWidths).forEach(breakpoint => {
+  Object.keys(maxWidths).forEach((breakpoint) => {
     const maxWidth = maxWidths[breakpoint];
     const media = mediaBreakpointUp(breakpoint, breakpoints);
 
     const mediaStyles = {
-      maxWidth
+      maxWidth,
     };
 
     if (media) {
       Object.assign(styles, {
-        [media]: mediaStyles
+        [media]: mediaStyles,
       });
     } else {
       Object.assign(styles, mediaStyles);
@@ -50,7 +50,7 @@ const Container = ({ children, styles, fluid, ...props }) => {
 
 Container.defaultProps = {
   styles,
-  fluid: false
+  fluid: false,
 };
 
 export default Container;

@@ -11,7 +11,7 @@ import {
   mediaBreakpointUp,
   mediaBreakpointDown,
   mediaBreakpointBetween,
-  mediaBreakpointOnly
+  mediaBreakpointOnly,
 } from '../';
 
 test('breakpointNext', () => {
@@ -85,11 +85,11 @@ test('render', () => {
       <div
         css={{
           [mediaBreakpointUp('xs')]: {
-            fontSize: 12
+            fontSize: 12,
           },
           [mediaBreakpointUp('sm')]: {
-            fontSize: 12
-          }
+            fontSize: 12,
+          },
         }}
       />
     )

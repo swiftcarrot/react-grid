@@ -7,7 +7,7 @@ export const makeRow = ({ gutterWidth }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   marginRight: gutterWidth / -2,
-  marginLeft: gutterWidth / -2
+  marginLeft: gutterWidth / -2,
 });
 
 const Row = ({ styles, noGutters, children, ...props }) => {
@@ -24,7 +24,7 @@ const Row = ({ styles, noGutters, children, ...props }) => {
 
 Row.defaultProps = {
   styles,
-  noGutters: false
+  noGutters: false,
 };
 
 const rowStyles = {
@@ -34,9 +34,9 @@ const rowStyles = {
 
     '& > [data-eg-col]': {
       paddingRight: 0,
-      paddingLeft: 0
-    }
-  }
+      paddingLeft: 0,
+    },
+  },
 };
 
 export default Row;

@@ -5,40 +5,40 @@ import pkg from './package.json';
 
 const input = './src/index.js';
 
-const external = id => !id.startsWith('.') && !id.startsWith('/');
+const external = (id) => !id.startsWith('.') && !id.startsWith('/');
 
 export default [
   {
     input,
     output: {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
     },
     external,
     plugins: [
       babel({
         babelHelpers: 'runtime',
-        plugins: ['@babel/transform-runtime']
+        plugins: ['@babel/transform-runtime'],
       }),
       nodeResolve(),
-      commonjs()
-    ]
+      commonjs(),
+    ],
   },
 
   {
     input,
     output: {
       file: pkg.module,
-      format: 'esm'
+      format: 'esm',
     },
     external,
     plugins: [
       babel({
         babelHelpers: 'runtime',
-        plugins: [['@babel/transform-runtime', { useESModules: true }]]
+        plugins: [['@babel/transform-runtime', { useESModules: true }]],
       }),
       nodeResolve(),
-      commonjs()
-    ]
-  }
+      commonjs(),
+    ],
+  },
 ];

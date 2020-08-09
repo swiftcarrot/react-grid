@@ -8,5 +8,5 @@ export {
   mediaBreakpointUp,
   mediaBreakpointDown,
   mediaBreakpointBetween,
-  mediaBreakpointOnly
+  mediaBreakpointOnly,
 } from './breakpoints';
