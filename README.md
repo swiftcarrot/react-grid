@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/react-grid.svg)](https://www.npmjs.com/package/react-grid)
 [![npm](https://img.shields.io/npm/dm/react-grid.svg)](https://www.npmjs.com/package/react-grid)
-[![Build Status](https://travis-ci.org/swiftcarrot/react-grid.svg?branch=master)](https://travis-ci.org/swiftcarrot/react-grid)
+[![Build Status](https://travis-ci.com/swiftcarrot/react-grid.svg?branch=master)](https://travis-ci.com/swiftcarrot/react-grid)
 [![codecov](https://codecov.io/gh/swiftcarrot/react-grid/branch/master/graph/badge.svg)](https://codecov.io/gh/swiftcarrot/react-grid)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
@@ -85,19 +85,21 @@ function App() {
 import {
   Container as ReactContainer,
   Row as ReactRow,
-  Col as ReactCol
+  Col as ReactCol,
 } from 'react-grid';
 
 const styles = {
   breakpoints: { xs: 0, sm: 576, md: 768, lg: 992, xl: 1200 },
   containerMaxWidths: { sm: 540, md: 720, lg: 960, xl: 1140 },
   columns: 12,
-  gutterWidth: 30
+  gutterWidth: 30,
 };
 
-export const Container = props => <ReactContainer {...props} styles={styles} />;
-export const Row = props => <ReactRow {...props} styles={styles} />;
-export const Col = props => <ReactCol {...props} styles={styles} />;
+export const Container = (props) => (
+  <ReactContainer {...props} styles={styles} />
+);
+export const Row = (props) => <ReactRow {...props} styles={styles} />;
+export const Col = (props) => <ReactCol {...props} styles={styles} />;
 
 // app.js
 import { Container, Row, Col } from './grid';
@@ -142,8 +144,8 @@ const App = () => (
   <div
     css={{
       [mediaBreakpointUp('sm')]: {
-        fontSize: 12
-      }
+        fontSize: 12,
+      },
     }}
   />
 );
